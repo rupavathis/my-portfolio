@@ -5,24 +5,24 @@ import { useEffect, useState } from "react";
 
 const achievements = [
   {
-    title: "SME & Modernization Lead",
-    description: "Lead modernization of legacy pricing applications for BT Ireland at Virtusa.",
-    icon: "🚀",
+    title: "Project Milestone",
+    description: "Successfully led a team of 10 to deliver a mission-critical enterprise solution 2 months ahead of schedule.",
+    icon: "🏆",
   },
   {
-    title: "Academic Excellence",
-    description: "Successfully navigated a significant career transition at Maynooth University.",
-    icon: "🎓",
+    title: "Innovation Award",
+    description: "Developed an AI-driven automation tool that reduced operational costs by 30% annually.",
+    icon: "💡",
   },
   {
-    title: "Industrial Intelligence",
-    description: "Developed intelligent systems at Eaton for enterprise-scale maintainability.",
-    icon: "⚡",
+    title: "Client Excellence",
+    description: "Maintained a 100% client satisfaction rate across multiple high-stakes projects.",
+    icon: "🤝",
   },
   {
-    title: "Cloud Scale @ Microsoft",
-    description: "Currently driving high-impact solutions within Microsoft's global ecosystem.",
-    icon: "💻",
+    title: "Process Improvement",
+    description: "Implemented a new CI/CD pipeline that improved deployment frequency by 50%.",
+    icon: "⚙️",
   },
 ];
 
@@ -30,8 +30,8 @@ const timeline = [
   {
     period: "Early Career — 2020",
     role: "Software Developer (SME)",
-    company: "Virtusa / BT Ireland",
-    description: "Started in Chennai, moved to Belfast as a Subject Matter Expert. Led modernization of legacy pricing systems for British Telecom, migrating core services to the cloud.",
+    company: "Virtusa / British Telecom (BT)",
+    description: "First I started my career as 'Software developer' in Virtusa. I worked with our client British Telecom (BT) on pricing and sales systems that generate quotations for wholesale customers using both real-time and historical data. Selected as a Subject Matter Expert, I worked on-site at BT Ireland’s headquarters in Belfast, where I led the modernisation of key legacy pricing applications onto a new technology stack, improved system performance and maintainability, and contributed to the migration of core pricing and quotation services from on-premises infrastructure to the cloud.",
     color: "from-blue-600 to-indigo-700",
     location: "Chennai ✈️ Belfast",
     bgText: "VIRTUSA"
@@ -40,7 +40,7 @@ const timeline = [
     period: "2020 Sep — 2024 July",
     role: "Software Professional",
     company: "Maynooth University",
-    description: "Drove digital transformation within the academic environment, managing complex student and administrative systems during a period of rapid modernization.",
+    description: "I switched to Maynooth University where I contributed to academic systems and digital transformation, managing complex administrative platforms during a period of rapid modernization.",
     color: "from-emerald-600 to-teal-700",
     location: "Maynooth, Ireland",
     bgText: "MAYNOOTH"
@@ -49,7 +49,7 @@ const timeline = [
     period: "2024 Aug — 2025 July",
     role: "Intelligent Systems Engineer",
     company: "Eaton Intelligent",
-    description: "Focused on building intelligent, data-driven solutions for industrial and enterprise applications, bridging the gap between hardware and software.",
+    description: "Joined Eaton Intelligent to focus on building intelligent, data-driven solutions for industrial and enterprise applications, bridging the gap between hardware and software.",
     color: "from-amber-500 to-orange-600",
     location: "Ireland",
     bgText: "EATON"
@@ -58,7 +58,7 @@ const timeline = [
     period: "2025 Aug — Present",
     role: "Software Engineer",
     company: "Microsoft",
-    description: "Contributing to world-class software at global scale. Leveraging expertise in modernization and intelligent systems to build the future of cloud computing.",
+    description: "Currently working at Microsoft, contributing to world-class software at global scale and leveraging expertise in modernization and intelligent systems.",
     color: "from-sky-500 to-blue-600",
     location: "Ireland",
     bgText: "MICROSOFT"
@@ -83,13 +83,13 @@ export default function Home() {
           <nav className="hidden md:flex gap-8 text-sm font-medium">
             <a href="#about" className="hover:text-blue-600 transition-colors">About</a>
             <a href="#journey" className="hover:text-blue-600 transition-colors">The Journey</a>
-            <a href="#achievements" className="hover:text-blue-600 transition-colors">Impact</a>
+            <a href="#achievements" className="hover:text-blue-600 transition-colors">Achievements</a>
           </nav>
         </div>
       </header>
 
       <main className="flex-grow">
-        {/* Hero Section with Parallax Background */}
+        {/* Hero Section */}
         <section id="about" className="relative h-screen flex items-center px-6 overflow-hidden">
           <div 
             className="absolute inset-0 z-0 opacity-20 pointer-events-none"
@@ -106,12 +106,14 @@ export default function Home() {
               Rupavathi <br /> Subramani
             </h1>
             <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-2xl mb-12 leading-relaxed">
-              Software Engineer at <span className="text-blue-600 font-bold">Microsoft</span>. 
-              Navigating the evolution of enterprise software through intelligence and scale.
+              A results-driven professional dedicated to building high-impact digital solutions and leading teams toward technical excellence.
             </p>
             <div className="flex flex-wrap gap-6">
               <a href="#journey" className="px-10 py-4 bg-zinc-900 text-white rounded-full font-bold hover:scale-105 transition-all dark:bg-zinc-50 dark:text-zinc-900 shadow-xl shadow-blue-500/20">
-                Explore My Career Path
+                View Achievements
+              </a>
+              <a href="mailto:contact@rupavathi.com" className="px-10 py-4 border border-zinc-300 rounded-full font-bold hover:bg-zinc-100 transition-all dark:border-zinc-700 dark:hover:bg-zinc-900">
+                Get in Touch
               </a>
             </div>
           </div>
@@ -126,8 +128,8 @@ export default function Home() {
         {/* Parallax Journey Section */}
         <section id="journey" className="relative py-24 bg-zinc-100 dark:bg-zinc-950">
           <div className="container mx-auto px-6 mb-20 text-center">
-             <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">The Evolution</h2>
-             <p className="text-zinc-500 uppercase tracking-[0.2em] text-sm font-bold">Scroll to experience the story</p>
+             <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">Professional Journey</h2>
+             <p className="text-zinc-500 uppercase tracking-[0.2em] text-sm font-bold">Scroll to see my experience</p>
           </div>
 
           <div className="max-w-5xl mx-auto px-6 pb-32">
@@ -137,7 +139,7 @@ export default function Home() {
                   key={index} 
                   className="sticky top-32 group"
                 >
-                  <div className={`relative overflow-hidden bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-[3rem] shadow-2xl border border-zinc-200 dark:border-zinc-800 transition-all duration-500 group-hover:scale-[1.02]`}>
+                  <div className={`relative overflow-hidden bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-[3rem] shadow-2xl border border-zinc-200 dark:border-zinc-800 transition-all duration-500 group-hover:scale-[1.01]`}>
                     {/* Background Parallax Text */}
                     <div className="absolute -right-10 -bottom-10 text-[10rem] font-black text-zinc-100 dark:text-zinc-800 opacity-50 select-none pointer-events-none group-hover:translate-x-4 transition-transform duration-700">
                       {step.bgText}
@@ -173,7 +175,7 @@ export default function Home() {
         <section id="achievements" className="py-32 px-6 bg-white dark:bg-black">
           <div className="container mx-auto max-w-6xl">
             <div className="mb-20 text-center">
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4">Global Impact</h2>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4">Professional Achievements</h2>
               <div className="h-2 w-24 bg-blue-600 rounded mx-auto"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -181,7 +183,6 @@ export default function Home() {
                 <div 
                   key={index} 
                   className="p-8 border border-zinc-100 dark:border-zinc-800 rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-900/50 hover:bg-blue-600 hover:text-white transition-all duration-300 group"
-                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="text-5xl mb-6 transform group-hover:scale-125 transition-transform duration-500">{item.icon}</div>
                   <h3 className="text-xl font-black mb-3 group-hover:text-white">{item.title}</h3>
@@ -193,33 +194,20 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Call to Action */}
-        <section className="py-24 px-6 bg-blue-600 text-white overflow-hidden relative">
-          <div className="absolute top-0 right-0 p-20 opacity-20 rotate-12">
-             <span className="text-[20rem] font-black leading-none">@</span>
-          </div>
-          <div className="container mx-auto max-w-4xl text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-8">Let's build the future.</h2>
-            <a href="mailto:contact@rupavathi.com" className="inline-block px-12 py-5 bg-white text-blue-600 rounded-full font-black text-xl hover:scale-110 transition-transform shadow-2xl">
-              Get in Touch
-            </a>
-          </div>
-        </section>
       </main>
 
       <footer className="py-16 px-6 bg-zinc-900 text-white">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="text-center md:text-left">
             <span className="text-3xl font-black tracking-tighter block mb-4">RS</span>
-            <p className="text-zinc-500 text-sm max-w-xs">
-              Showcasing a decade of technical excellence and international career growth.
+            <p className="text-zinc-500 text-sm">
+              © 2026 Rupavathi Subramani. Built with Next.js and Tailwind CSS.
             </p>
           </div>
           <div className="flex gap-12 font-black tracking-widest uppercase text-xs">
             <a href="#" className="hover:text-blue-500 transition-colors">LinkedIn</a>
             <a href="#" className="hover:text-blue-500 transition-colors">GitHub</a>
-            <a href="#" className="hover:text-blue-500 transition-colors">Resume</a>
+            <a href="#" className="hover:text-blue-500 transition-colors">Twitter</a>
           </div>
         </div>
       </footer>
