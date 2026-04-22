@@ -337,33 +337,33 @@ export default function AllProjectDashboard() {
   const pastProjects = useMemo(() => PROJECTS.filter(p => !p.isCurrent), []);
 
   return (
-    <div className="min-h-screen bg-[#FDFEFF] text-slate-800 font-sans selection:bg-indigo-100">
+    <div className="min-h-screen bg-[#FDFEFF] text-slate-900 font-sans selection:bg-indigo-100">
       <div className="flex h-screen overflow-hidden">
         
         {/* SIDEBAR */}
-        <div className="w-96 bg-white border-r border-slate-100 flex flex-col shadow-[20px_0_60px_rgba(0,0,0,0.01)] z-20 overflow-y-auto custom-scrollbar">
+        <div className="w-96 bg-white border-r border-slate-200 flex flex-col shadow-[20px_0_60px_rgba(0,0,0,0.02)] z-20 overflow-y-auto custom-scrollbar">
           <div className="p-8">
-            <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors mb-8 group">
+            <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors mb-8 group">
                <Home className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
                <span className="text-[10px] font-bold uppercase tracking-widest">Return to Proposals</span>
             </Link>
 
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-[1.25rem] bg-slate-800 flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 rounded-[1.25rem] bg-slate-900 flex items-center justify-center shadow-lg">
                 <Layers className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold tracking-tight text-slate-800 uppercase leading-none mb-1">Project Health</h1>
-                <p className="text-[10px] text-indigo-500 font-semibold tracking-wider uppercase">Infrastructure Observatory</p>
+                <h1 className="text-lg font-bold tracking-tight text-slate-900 uppercase leading-none mb-1">Project Health</h1>
+                <p className="text-[10px] text-indigo-600 font-semibold tracking-wider uppercase">Infrastructure Observatory</p>
               </div>
             </div>
 
-            <div className="mb-10 p-5 rounded-2xl bg-indigo-50/40 border border-indigo-100/50">
+            <div className="mb-10 p-5 rounded-2xl bg-indigo-50/50 border border-indigo-200">
                <div className="flex items-center gap-2 mb-2">
-                  <Info className="w-3.5 h-3.5 text-indigo-600" />
+                  <Info className="w-3.5 h-3.5 text-indigo-700" />
                   <span className="text-[10px] font-bold text-indigo-900 uppercase">Observer Framing</span>
                </div>
-               <p className="text-[11px] text-indigo-700/70 italic leading-relaxed">
+               <p className="text-[11px] text-indigo-800 italic leading-relaxed">
                   "Technical architecture should not just serve the needs of today, but ensure the scholarly heritage of Digital Humanities remains accessible for the next century."
                </p>
             </div>
@@ -371,7 +371,7 @@ export default function AllProjectDashboard() {
             <div className="space-y-8">
               {/* CURRENT PROJECTS */}
               <div>
-                <h2 className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest px-2 mb-4 flex items-center gap-2">
+                <h2 className="text-[10px] font-bold text-indigo-700 uppercase tracking-widest px-2 mb-4 flex items-center gap-2">
                   <Activity className="w-3 h-3" /> Current Projects
                 </h2>
                 <div className="space-y-2">
@@ -381,8 +381,8 @@ export default function AllProjectDashboard() {
                       onClick={() => setSelectedProject(project)}
                       className={`w-full group flex items-center justify-between p-4 rounded-[1.25rem] transition-all duration-300 ${
                         selectedProject?.id === project.id
-                          ? 'bg-slate-800 shadow-xl scale-[1.01]'
-                          : 'hover:bg-slate-50'
+                          ? 'bg-slate-900 shadow-xl scale-[1.01]'
+                          : 'hover:bg-slate-50 border border-transparent hover:border-slate-100'
                       }`}
                     >
                       <div className="flex items-center gap-4">
@@ -390,13 +390,13 @@ export default function AllProjectDashboard() {
                           {project.name[0]}
                         </div>
                         <div className="text-left">
-                          <div className={`text-xs font-semibold ${selectedProject?.id === project.id ? 'text-white' : 'text-slate-700'}`}>
+                          <div className={`text-xs font-bold ${selectedProject?.id === project.id ? 'text-white' : 'text-slate-800'}`}>
                             {project.name}
                           </div>
-                          <div className="text-[10px] text-slate-400">{project.pi}</div>
+                          <div className={`text-[10px] ${selectedProject?.id === project.id ? 'text-slate-400' : 'text-slate-500'}`}>{project.pi}</div>
                         </div>
                       </div>
-                      <ChevronRight className={`w-3.5 h-3.5 transition-all ${selectedProject?.id === project.id ? 'text-white' : 'text-slate-200'}`} />
+                      <ChevronRight className={`w-3.5 h-3.5 transition-all ${selectedProject?.id === project.id ? 'text-white' : 'text-slate-300'}`} />
                     </button>
                   ))}
                 </div>
@@ -404,7 +404,7 @@ export default function AllProjectDashboard() {
 
               {/* PAST PROJECTS */}
               <div>
-                <h2 className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest px-2 mb-4 flex items-center gap-2">
+                <h2 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-2 mb-4 flex items-center gap-2">
                   <Database className="w-3 h-3" /> Past Projects
                 </h2>
                 <div className="space-y-2">
@@ -414,8 +414,8 @@ export default function AllProjectDashboard() {
                       onClick={() => setSelectedProject(project)}
                       className={`w-full group flex items-center justify-between p-4 rounded-[1.25rem] transition-all duration-300 ${
                         selectedProject?.id === project.id
-                          ? 'bg-slate-800 shadow-xl scale-[1.01]'
-                          : 'hover:bg-slate-50'
+                          ? 'bg-slate-900 shadow-xl scale-[1.01]'
+                          : 'hover:bg-slate-50 border border-transparent hover:border-slate-100'
                       }`}
                     >
                       <div className="flex items-center gap-4">
@@ -423,16 +423,16 @@ export default function AllProjectDashboard() {
                           {project.name[0]}
                         </div>
                         <div className="text-left">
-                          <div className={`text-xs font-semibold ${selectedProject?.id === project.id ? 'text-white' : 'text-slate-700'}`}>
+                          <div className={`text-xs font-bold ${selectedProject?.id === project.id ? 'text-white' : 'text-slate-800'}`}>
                             {project.name}
                           </div>
-                          <div className="text-[10px] text-slate-400">{project.pi}</div>
+                          <div className={`text-[10px] ${selectedProject?.id === project.id ? 'text-slate-400' : 'text-slate-500'}`}>{project.pi}</div>
                         </div>
                       </div>
                       {project.status === 'at-risk' || project.status === 'issue' ? (
                         <AlertTriangle className={`w-3.5 h-3.5 text-amber-500 animate-pulse`} />
                       ) : (
-                        <ChevronRight className={`w-3.5 h-3.5 transition-all ${selectedProject?.id === project.id ? 'text-white' : 'text-slate-200'}`} />
+                        <ChevronRight className={`w-3.5 h-3.5 transition-all ${selectedProject?.id === project.id ? 'text-white' : 'text-slate-300'}`} />
                       )}
                     </button>
                   ))}
@@ -456,123 +456,123 @@ export default function AllProjectDashboard() {
                 {/* PROJECT HEADER */}
                 <div className="flex flex-wrap items-center gap-4 mb-6">
                   <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                    selectedProject.status === 'operational' ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 
-                    selectedProject.status === 'at-risk' ? 'bg-amber-50 text-amber-600 border border-amber-100' :
-                    'bg-rose-50 text-rose-600 border border-rose-100'
+                    selectedProject.status === 'operational' ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 
+                    selectedProject.status === 'at-risk' ? 'bg-amber-100 text-amber-800 border border-amber-200' :
+                    'bg-rose-100 text-rose-800 border border-rose-200'
                   }`}>
                     Status: {selectedProject.status}
                   </span>
-                  <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+                  <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[10px] font-bold text-slate-600 uppercase tracking-wider">
                     <Database className="w-3 h-3" /> Preservation: {selectedProject.preservationStatus}
                   </span>
-                  <span className="text-[10px] font-medium text-slate-400">Last Update: {selectedProject.lastUpdate}</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Last Update: {selectedProject.lastUpdate}</span>
                 </div>
 
                 <div className="mb-10">
-                  <h1 className="text-4xl font-bold text-slate-800 tracking-tight mb-3">{selectedProject.name}</h1>
-                  <p className="text-lg text-slate-400 font-medium max-w-3xl leading-relaxed mb-8">{selectedProject.description}</p>
+                  <h1 className="text-4xl font-black text-slate-900 tracking-tight mb-4">{selectedProject.name}</h1>
+                  <p className="text-xl text-slate-600 font-medium max-w-3xl leading-relaxed mb-10">{selectedProject.description}</p>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-slate-50/50 p-6 rounded-3xl border border-slate-100">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm">
                     <div>
-                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Principal Investigator</div>
-                      <div className="text-sm font-bold text-slate-700">{selectedProject.pi}</div>
+                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Principal Investigator</div>
+                      <div className="text-sm font-bold text-slate-900">{selectedProject.pi}</div>
                     </div>
                     <div>
-                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Funded By</div>
-                      <div className="text-sm font-bold text-slate-700">{selectedProject.fundedBy}</div>
+                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Funded By</div>
+                      <div className="text-sm font-bold text-slate-900">{selectedProject.fundedBy}</div>
                     </div>
                     <div>
-                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Duration</div>
-                      <div className="text-sm font-bold text-slate-700">{selectedProject.duration}</div>
+                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Duration</div>
+                      <div className="text-sm font-bold text-slate-900">{selectedProject.duration}</div>
                     </div>
                   </div>
                 </div>
 
                 {/* SCHOLARLY CONTENT METRICS */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-                  <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 bg-blue-50 text-blue-600 rounded-lg"><FileText className="w-4 h-4" /></div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Records</span>
+                  <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-2 bg-blue-50 text-blue-700 rounded-xl"><FileText className="w-4 h-4" /></div>
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Records</span>
                     </div>
-                    <div className="text-2xl font-bold text-slate-800">{selectedProject.recordsCount.toLocaleString()}</div>
-                    <div className="mt-2 text-[10px] text-slate-400">Total in Database</div>
+                    <div className="text-3xl font-black text-slate-900">{selectedProject.recordsCount.toLocaleString()}</div>
+                    <div className="mt-2 text-[10px] font-bold text-slate-500 uppercase">Total in Database</div>
                   </div>
-                  <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><CheckCircle2 className="w-4 h-4" /></div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Catalogued</span>
+                  <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-2 bg-emerald-50 text-emerald-700 rounded-xl"><CheckCircle2 className="w-4 h-4" /></div>
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Catalogued</span>
                     </div>
-                    <div className="text-2xl font-bold text-slate-800">{selectedProject.cataloguedPercent}%</div>
-                    <div className="mt-2 w-full bg-slate-100 h-1 rounded-full overflow-hidden">
-                      <div className="bg-emerald-500 h-full" style={{ width: `${selectedProject.cataloguedPercent}%` }}></div>
+                    <div className="text-3xl font-black text-slate-900">{selectedProject.cataloguedPercent}%</div>
+                    <div className="mt-3 w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-emerald-600 h-full" style={{ width: `${selectedProject.cataloguedPercent}%` }}></div>
                     </div>
                   </div>
-                  <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 bg-violet-50 text-violet-600 rounded-lg"><Info className="w-4 h-4" /></div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Metadata Score</span>
+                  <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-2 bg-violet-50 text-violet-700 rounded-xl"><Info className="w-4 h-4" /></div>
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Metadata</span>
                     </div>
-                    <div className="text-2xl font-bold text-slate-800">{selectedProject.metadataScore}%</div>
-                    <div className="mt-2 text-[10px] text-slate-400">Completeness Index</div>
+                    <div className="text-3xl font-black text-slate-900">{selectedProject.metadataScore}%</div>
+                    <div className="mt-2 text-[10px] font-bold text-slate-500 uppercase">Completeness Index</div>
                   </div>
-                  <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 bg-amber-50 text-amber-600 rounded-lg"><Activity className="w-4 h-4" /></div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Digitized</span>
+                  <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-2 bg-amber-50 text-amber-700 rounded-xl"><Activity className="w-4 h-4" /></div>
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Digitized</span>
                     </div>
-                    <div className="text-2xl font-bold text-slate-800">{selectedProject.digitizedCount.toLocaleString()}</div>
-                    <div className="mt-2 text-[10px] text-slate-400">Media Assets</div>
+                    <div className="text-3xl font-black text-slate-900">{selectedProject.digitizedCount.toLocaleString()}</div>
+                    <div className="mt-2 text-[10px] font-bold text-slate-500 uppercase">Media Assets</div>
                   </div>
                 </div>
 
                 {/* ENGAGEMENT & REASEARCH METRICS */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
-                  <div className="lg:col-span-2 bg-slate-800 rounded-[2.5rem] p-8 text-white shadow-xl">
-                    <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-[0.2em] mb-8">User Engagement Trends</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                  <div className="lg:col-span-2 bg-slate-900 rounded-[3rem] p-10 text-white shadow-2xl">
+                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.3em] mb-10">User Engagement Trends</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-slate-400 mb-2"><Search className="w-3 h-3" /> <span className="text-[10px] font-bold uppercase">Searches</span></div>
-                        <div className="text-2xl font-bold">{selectedProject.searches.toLocaleString()}</div>
+                        <div className="flex items-center gap-2 text-slate-400 mb-2"><Search className="w-3 h-3" /> <span className="text-[10px] font-bold uppercase tracking-widest">Searches</span></div>
+                        <div className="text-3xl font-black tracking-tight">{selectedProject.searches.toLocaleString()}</div>
                       </div>
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-slate-400 mb-2"><Eye className="w-3 h-3" /> <span className="text-[10px] font-bold uppercase">Views</span></div>
-                        <div className="text-2xl font-bold">{selectedProject.pageViews.toLocaleString()}</div>
+                        <div className="flex items-center gap-2 text-slate-400 mb-2"><Eye className="w-3 h-3" /> <span className="text-[10px] font-bold uppercase tracking-widest">Views</span></div>
+                        <div className="text-3xl font-black tracking-tight">{selectedProject.pageViews.toLocaleString()}</div>
                       </div>
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-slate-400 mb-2"><Download className="w-3 h-3" /> <span className="text-[10px] font-bold uppercase">Downloads</span></div>
-                        <div className="text-2xl font-bold">{selectedProject.downloads.toLocaleString()}</div>
+                        <div className="flex items-center gap-2 text-slate-400 mb-2"><Download className="w-3 h-3" /> <span className="text-[10px] font-bold uppercase tracking-widest">Downloads</span></div>
+                        <div className="text-3xl font-black tracking-tight">{selectedProject.downloads.toLocaleString()}</div>
                       </div>
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-slate-400 mb-2"><Users className="w-3 h-3" /> <span className="text-[10px] font-bold uppercase">Contributors</span></div>
-                        <div className="text-2xl font-bold">{selectedProject.contributors}</div>
+                        <div className="flex items-center gap-2 text-slate-400 mb-2"><Users className="w-3 h-3" /> <span className="text-[10px] font-bold uppercase tracking-widest">Scholars</span></div>
+                        <div className="text-3xl font-black tracking-tight">{selectedProject.contributors}</div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-sm flex flex-col justify-between">
+                  <div className="bg-white rounded-[3rem] p-10 border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
-                      <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Technical Integrity</h3>
-                      <div className="space-y-4">
-                        <div className="flex justify-between text-xs font-medium">
-                          <span className="text-slate-500">API Availability</span>
-                          <span className="text-emerald-600 font-bold">{selectedProject.apiAvailability}%</span>
+                      <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Technical Integrity</h3>
+                      <div className="space-y-5">
+                        <div className="flex justify-between text-xs font-bold">
+                          <span className="text-slate-500 uppercase tracking-widest">API Uptime</span>
+                          <span className="text-emerald-700 font-black">{selectedProject.apiAvailability}%</span>
                         </div>
-                        <div className="flex justify-between text-xs font-medium">
-                          <span className="text-slate-500">Broken Links</span>
-                          <span className={`${selectedProject.brokenLinks > 10 ? 'text-rose-500' : 'text-slate-800'} font-bold`}>{selectedProject.brokenLinks}</span>
+                        <div className="flex justify-between text-xs font-bold">
+                          <span className="text-slate-500 uppercase tracking-widest">Broken Links</span>
+                          <span className={`${selectedProject.brokenLinks > 10 ? 'text-rose-600' : 'text-slate-900'} font-black`}>{selectedProject.brokenLinks}</span>
                         </div>
-                        <div className="flex justify-between text-xs font-medium">
-                          <span className="text-slate-500">Server Latency</span>
-                          <span className="text-slate-800 font-bold">{selectedProject.metrics.latency}ms</span>
+                        <div className="flex justify-between text-xs font-bold">
+                          <span className="text-slate-500 uppercase tracking-widest">Latency</span>
+                          <span className="text-slate-900 font-black">{selectedProject.metrics.latency}ms</span>
                         </div>
                       </div>
                     </div>
                     {selectedProject.status === 'at-risk' && (
-                      <div className="mt-6 flex items-start gap-3 p-3 bg-amber-50 rounded-xl border border-amber-100">
-                        <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                        <p className="text-[10px] text-amber-700 font-medium leading-normal">
-                          Stale metadata detected. Content review required to maintain preservation standards.
+                      <div className="mt-8 flex items-start gap-3 p-4 bg-amber-50 rounded-2xl border border-amber-200">
+                        <AlertCircle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                        <p className="text-[10px] text-amber-900 font-bold leading-normal uppercase tracking-wider">
+                          Critical: Content review required.
                         </p>
                       </div>
                     )}
@@ -580,22 +580,22 @@ export default function AllProjectDashboard() {
                 </div>
 
                 {/* FAIR COMPLIANCE SCORES */}
-                <div className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-sm mb-10">
-                  <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-widest mb-10 flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-indigo-500" /> FAIR Compliance Indicators
+                <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-sm mb-10">
+                  <h3 className="text-sm font-black text-slate-900 uppercase tracking-[0.2em] mb-12 flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-indigo-600" /> FAIR Compliance Indicators
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                     {Object.entries(selectedProject.fairCompliance).map(([key, val]) => (
-                      <div key={key} className="space-y-4">
+                      <div key={key} className="space-y-5">
                         <div className="flex justify-between items-end">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{key}</span>
-                          <span className="text-sm font-bold text-slate-800">{val}%</span>
+                          <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">{key}</span>
+                          <span className="text-lg font-black text-slate-900">{val}%</span>
                         </div>
-                        <div className="w-full bg-slate-50 h-2 rounded-full overflow-hidden">
+                        <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
                           <motion.div 
                             initial={{ width: 0 }}
                             animate={{ width: `${val}%` }}
-                            className={`h-full ${val > 85 ? 'bg-indigo-500' : val > 70 ? 'bg-blue-400' : 'bg-amber-400'}`}
+                            className={`h-full ${val > 85 ? 'bg-indigo-600' : val > 70 ? 'bg-blue-500' : 'bg-amber-500'}`}
                           />
                         </div>
                       </div>
@@ -605,11 +605,11 @@ export default function AllProjectDashboard() {
 
                 {/* WARNING LOG */}
                 {selectedProject.status !== 'operational' && (
-                  <div className="p-6 rounded-[2rem] bg-rose-50 border border-rose-100 mb-10 flex items-center gap-6 animate-pulse">
-                    <div className="p-3 bg-rose-100 text-rose-600 rounded-2xl"><AlertTriangle className="w-6 h-6" /></div>
+                  <div className="p-8 rounded-[2.5rem] bg-rose-50 border border-rose-200 mb-10 flex items-center gap-8 animate-pulse">
+                    <div className="p-4 bg-rose-100 text-rose-700 rounded-2xl shadow-sm"><AlertTriangle className="w-8 h-8" /></div>
                     <div>
-                      <div className="text-xs font-bold text-rose-900 uppercase tracking-wider mb-1">Maintenance Warning</div>
-                      <p className="text-xs text-rose-700 font-medium">Critical technical issues or stale metadata identified. "Irish in Europe" legacy migration requires immediate attention.</p>
+                      <div className="text-xs font-black text-rose-900 uppercase tracking-[0.2em] mb-1">Maintenance Alert</div>
+                      <p className="text-sm text-rose-800 font-bold leading-relaxed">Legacy migration or stale metadata identified. Immediate technical attention required to maintain scholarly integrity.</p>
                     </div>
                   </div>
                 )}

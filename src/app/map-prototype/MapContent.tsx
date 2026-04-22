@@ -134,10 +134,10 @@ export default function MapContent() {
   if (!mounted) return null;
 
   return (
-    <div className="flex h-screen w-screen bg-[#F8FAFC] overflow-hidden text-slate-900">
+    <div className="flex h-screen w-screen bg-[#FDFEFF] overflow-hidden text-slate-900">
       {/* Sidebar */}
       <div className="w-80 bg-white border-r border-slate-200 flex flex-col p-8 z-10 shadow-lg">
-        <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-600 transition-colors mb-6 group">
+        <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors mb-6 group">
            <Home className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
            <span className="text-[10px] font-bold uppercase tracking-widest">Return to Proposals</span>
         </Link>
@@ -147,13 +147,13 @@ export default function MapContent() {
             <div className="w-2 h-6 bg-blue-600 rounded-full"></div>
             MAP PROTOTYPE
           </h1>
-          <p className="text-[10px] text-slate-400 font-bold tracking-[0.2em] mt-1 ml-4 uppercase">
+          <p className="text-[10px] text-slate-600 font-bold tracking-[0.2em] mt-1 ml-4 uppercase">
             Data Visualization
           </p>
         </div>
         
         <div className="flex flex-col gap-8 flex-1 overflow-hidden">          <div className="flex flex-col gap-3">
-            <label className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
+            <label className="text-[11px] font-bold text-slate-600 uppercase tracking-widest">
               Data Source
             </label>
             <input
@@ -164,9 +164,9 @@ export default function MapContent() {
                 file:mr-4 file:py-2 file:px-4
                 file:rounded-full file:border-0
                 file:text-[11px] file:font-bold file:uppercase
-                file:bg-slate-100 file:text-slate-600
+                file:bg-slate-100 file:text-slate-700
                 hover:file:bg-blue-600 hover:file:text-white
-                transition-all cursor-pointer"
+                transition-all cursor-pointer border border-slate-100 rounded-full"
             />
           </div>
 
@@ -190,7 +190,7 @@ export default function MapContent() {
                 transitionInterpolator: new FlyToInterpolator()
               });
             }}
-            className="w-full py-3 px-4 rounded-xl border-2 border-dashed border-slate-200 text-slate-400 text-[11px] font-bold uppercase tracking-widest hover:border-blue-400 hover:text-blue-500 hover:bg-blue-50/50 transition-all group"
+            className="w-full py-3 px-4 rounded-xl border-2 border-dashed border-slate-200 text-slate-600 text-[11px] font-bold uppercase tracking-widest hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 transition-all group shadow-sm"
             title="Double-click to load sample data"
           >
             Load Sample <span className="lowercase font-normal opacity-50 block mt-1">(Double-click)</span>
@@ -198,42 +198,42 @@ export default function MapContent() {
 
           <button
             onClick={() => setShowHistoricalMap(!showHistoricalMap)}
-            className={`w-full py-4 px-4 rounded-xl border flex items-center justify-between transition-all font-bold text-[11px] uppercase tracking-widest ${
+            className={`w-full py-4 px-4 rounded-xl border-2 flex items-center justify-between transition-all font-black text-[11px] uppercase tracking-widest ${
               showHistoricalMap 
-                ? 'bg-slate-800 border-slate-800 text-white shadow-lg' 
-                : 'bg-white border-slate-200 text-slate-600 hover:border-slate-400'
+                ? 'bg-slate-900 border-slate-900 text-white shadow-xl' 
+                : 'bg-white border-slate-200 text-slate-600 hover:border-blue-500'
             }`}
           >
             <span>Historical Overlay</span>
-            <div className={`w-8 h-4 rounded-full relative transition-all ${showHistoricalMap ? 'bg-blue-500' : 'bg-slate-200'}`}>
+            <div className={`w-8 h-4 rounded-full relative transition-all ${showHistoricalMap ? 'bg-blue-500' : 'bg-slate-300'}`}>
               <div className={`absolute top-1 w-2 h-2 rounded-full bg-white transition-all ${showHistoricalMap ? 'left-5' : 'left-1'}`}></div>
             </div>
           </button>
 
-          <div className="p-4 rounded-2xl bg-blue-50 border border-blue-100">
-            <p className="text-[11px] text-blue-700 leading-relaxed">
+          <div className="p-5 rounded-2xl bg-blue-50 border border-blue-200 shadow-sm">
+            <p className="text-[11px] text-blue-800 font-medium leading-relaxed">
               Upload a CSV with <b>name, lat, long</b> to visualize points.
             </p>
           </div>
 
           {data.length > 0 && (
             <div className="flex-1 overflow-hidden flex flex-col min-h-0">
-              <div className="flex justify-between items-end mb-4">
-                <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
+              <div className="flex justify-between items-end mb-4 px-1">
+                <h2 className="text-[11px] font-black text-slate-900 uppercase tracking-widest">
                   Active Points ({data.length})
                 </h2>
                 <button 
                   onClick={() => setData([])}
-                  className="text-[10px] font-bold text-rose-500 hover:text-rose-600 uppercase"
+                  className="text-[10px] font-black text-rose-600 hover:text-rose-700 uppercase tracking-wider"
                 >
                   Reset
                 </button>
               </div>
-              <div className="space-y-2 overflow-y-auto pr-2">
+              <div className="space-y-2 overflow-y-auto pr-2 custom-scrollbar">
                 {data.map((loc, i) => (
                   <div 
                     key={i} 
-                    className="p-4 bg-white rounded-xl border border-slate-100 hover:border-blue-200 transition-all cursor-pointer"
+                    className="p-4 bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition-all cursor-pointer group"
                     onClick={() => setViewState({
                       ...viewState,
                       longitude: loc.longitude,
@@ -243,8 +243,8 @@ export default function MapContent() {
                       transitionInterpolator: new FlyToInterpolator()
                     })}
                   >
-                    <div className="text-xs font-bold text-slate-800">{loc.name}</div>
-                    <div className="text-[10px] text-slate-400 mt-1 font-mono">{loc.latitude.toFixed(4)}, {loc.longitude.toFixed(4)}</div>
+                    <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700">{loc.name}</div>
+                    <div className="text-[10px] text-slate-500 mt-1 font-mono">{loc.latitude.toFixed(4)}, {loc.longitude.toFixed(4)}</div>
                   </div>
                 ))}
               </div>
@@ -254,8 +254,8 @@ export default function MapContent() {
       </div>
 
       {/* Map View */}
-      <div className="flex-1 p-8 bg-[#F8FAFC]">
-        <div className="w-full h-full relative rounded-[2rem] shadow-2xl overflow-hidden border border-white bg-slate-200">
+      <div className="flex-1 p-8 bg-[#FDFEFF]">
+        <div className="w-full h-full relative rounded-[3rem] shadow-2xl overflow-hidden border-8 border-white bg-slate-200">
           <DeckGL
             viewState={viewState}
             onViewStateChange={onViewStateChange}
