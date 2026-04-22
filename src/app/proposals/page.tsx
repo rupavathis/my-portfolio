@@ -13,7 +13,7 @@ const PROPOSALS = [
     id: 'dashboard',
     title: 'Project Health Dashboard',
     subtitle: 'Infrastructure Visibility',
-    description: 'A comprehensive monitoring system that ensures the scholarly heritage of Digital Humanities remains accessible for the next century. Tracks FAIR compliance, preservation status, and real-time technical health.',
+    description: 'Ensuring the longevity of scholar-led initiatives. A monitoring system that guarantees research projects remain accessible, FAIR-compliant, and technically robust for future generations.',
     link: '/all-project-dashboard',
     icon: <Layers className="w-6 h-6" />,
     color: 'from-blue-500 to-indigo-600',
@@ -21,23 +21,23 @@ const PROPOSALS = [
   },
   {
     id: 'search',
-    title: 'Advanced Archive Search',
-    subtitle: 'Discovery Engine',
-    description: 'A modern search interface designed for historical records. Features 3-character intelligent autocomplete, faceted filtering by social status, and responsive data tables.',
+    title: 'Discovery & Research Engine',
+    subtitle: 'Advanced Archive Search',
+    description: 'Empowering students and scholars to rapidly develop research projects. An intelligent search interface that turns complex historical archives into actionable research datasets.',
     link: '/search-prototype',
     icon: <Search className="w-6 h-6" />,
     color: 'from-emerald-500 to-teal-600',
-    tags: ['UX Design', 'Elastic Search', 'Historical Data']
+    tags: ['Rapid Discovery', 'Data Extraction', 'Research']
   },
   {
     id: 'mapping',
-    title: 'Interactive Mapping Engine',
-    subtitle: 'Geospatial Visualization',
-    description: 'High-performance Deck.gl visualization engine for Irish historical coordinates. Supports dynamic CSV uploads, smooth camera transitions, and multi-layered data storytelling.',
+    title: 'Geospatial Inquiry Tool',
+    subtitle: 'Interactive Mapping',
+    description: 'Benefit from instant spatial visualization. A tool designed for scholars to quickly upload datasets and visualize historical patterns through a high-performance interactive engine.',
     link: '/map-prototype',
     icon: <MapIcon className="w-6 h-6" />,
     color: 'from-violet-500 to-purple-600',
-    tags: ['Deck.gl', 'GIS', 'Interactive']
+    tags: ['Visualization', 'Spatial Humanities', 'GIS']
   }
 ];
 
@@ -54,13 +54,13 @@ export default function ProposalsPage() {
             className="flex flex-col items-center text-center"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[10px] font-bold text-indigo-600 uppercase tracking-[0.2em] mb-8">
-              <ShieldCheck className="w-3.5 h-3.5" /> Technical Infrastructure Proposals
+              <ShieldCheck className="w-3.5 h-3.5" /> Scholar-Centric Research Tools
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-slate-800 tracking-tight leading-none mb-8 max-w-4xl">
-              Modernizing the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">Digital Humanities</span> Experience.
+              Accelerating <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">Humanities Research</span> through Data.
             </h1>
             <p className="text-xl text-slate-400 font-medium max-w-2xl leading-relaxed mb-12">
-              Three interconnected architectural solutions designed to improve accessibility, maintainability, and discovery across Maynooth University’s historical projects.
+              Transforming how students and scholars engage with historical data by providing the tools to develop, visualize, and sustain digital research projects at scale.
             </p>
             
             <div className="flex gap-12 text-slate-300">

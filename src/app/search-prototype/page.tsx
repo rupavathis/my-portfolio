@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { Home } from 'lucide-react';
+import Link from 'next/link';
 
 interface Entry {
   name: string;
@@ -97,6 +99,23 @@ export default function SearchPrototypePage() {
     setHasSearched(false);
   };
 
+  const [isImporting, setIsImporting] = useState(false);
+  const [importStatus, setImportStatus] = useState<'idle' | 'importing' | 'success'>('idle');
+
+  const simulateImport = () => {
+    setIsImporting(true);
+    setImportStatus('importing');
+    
+    // Simulate a multi-step import process
+    setTimeout(() => {
+      setImportStatus('success');
+      setTimeout(() => {
+        setIsImporting(false);
+        setImportStatus('idle');
+      }, 3000);
+    }, 2000);
+  };
+
   if (isLoading) {
     return (
       <div className="flex h-screen items-center justify-center bg-gray-50">
@@ -108,16 +127,54 @@ export default function SearchPrototypePage() {
   return (
     <div className="min-h-screen bg-[#FDFEFF] text-slate-900 font-sans p-8 md:p-12">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-12">
-          <div className="flex items-center gap-4 mb-2">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-200">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+        <header className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col gap-2">
+            <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-emerald-600 transition-colors mb-4 group">
+               <Home className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+               <span className="text-[10px] font-bold uppercase tracking-widest">Return to Proposals</span>
+            </Link>
+            <div className="flex items-center gap-4 mb-2">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-200">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <h1 className="text-3xl font-black text-slate-900 tracking-tight">Search Prototype</h1>
             </div>
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight">Search Prototype</h1>
+            <p className="text-xs text-emerald-600 font-bold tracking-[0.3em] ml-1 uppercase">Historical Archive Explorer</p>
           </div>
-          <p className="text-xs text-emerald-600 font-bold tracking-[0.3em] ml-1 uppercase">Historical Archive Explorer</p>
+
+          <div className="flex items-center gap-4">
+            {importStatus === 'success' && (
+              <div className="flex items-center gap-2 text-emerald-600 animate-in fade-in slide-in-from-right-4">
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span className="text-[10px] font-bold uppercase tracking-widest">Archive Synced Successfully</span>
+              </div>
+            )}
+            <button
+              onClick={simulateImport}
+              disabled={isImporting}
+              className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[10px] transition-all ${
+                isImporting 
+                  ? 'bg-slate-100 text-slate-400 cursor-not-allowed' 
+                  : 'bg-white border border-slate-200 text-slate-600 hover:border-emerald-500 hover:text-emerald-600 shadow-sm'
+              }`}
+            >
+              {isImporting ? (
+                <>
+                  <div className="w-3 h-3 border-2 border-slate-300 border-t-slate-600 rounded-full animate-spin"></div>
+                  Syncing Database...
+                </>
+              ) : (
+                <>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                  </svg>
+                  Import Data
+                </>
+              )}
+            </button>
+          </div>
         </header>
 
         {/* Search Controls Card */}

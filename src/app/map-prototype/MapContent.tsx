@@ -5,6 +5,8 @@ import DeckGL from '@deck.gl/react';
 import { IconLayer, ScatterplotLayer, BitmapLayer } from '@deck.gl/layers';
 import { Map } from 'react-map-gl/maplibre';
 import { FlyToInterpolator } from '@deck.gl/core';
+import { Home } from 'lucide-react';
+import Link from 'next/link';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 // Initial view centered on Ireland
@@ -135,6 +137,11 @@ export default function MapContent() {
     <div className="flex h-screen w-screen bg-[#F8FAFC] overflow-hidden text-slate-900">
       {/* Sidebar */}
       <div className="w-80 bg-white border-r border-slate-200 flex flex-col p-8 z-10 shadow-lg">
+        <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-600 transition-colors mb-6 group">
+           <Home className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+           <span className="text-[10px] font-bold uppercase tracking-widest">Return to Proposals</span>
+        </Link>
+
         <div className="mb-10">
           <h1 className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <div className="w-2 h-6 bg-blue-600 rounded-full"></div>
@@ -145,8 +152,7 @@ export default function MapContent() {
           </p>
         </div>
         
-        <div className="flex flex-col gap-8 flex-1 overflow-hidden">
-          <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-8 flex-1 overflow-hidden">          <div className="flex flex-col gap-3">
             <label className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
               Data Source
             </label>

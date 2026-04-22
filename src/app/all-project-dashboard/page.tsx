@@ -7,8 +7,9 @@ import {
   Cpu, ChevronRight, BarChart3,
   Terminal, HardDrive, FileText, Search, Download, 
   Eye, CheckCircle2, AlertTriangle, Info, Layers,
-  Database
+  Database, Home
 } from 'lucide-react';
+import Link from 'next/link';
 
 interface Project {
   id: string;
@@ -342,6 +343,11 @@ export default function AllProjectDashboard() {
         {/* SIDEBAR */}
         <div className="w-96 bg-white border-r border-slate-100 flex flex-col shadow-[20px_0_60px_rgba(0,0,0,0.01)] z-20 overflow-y-auto custom-scrollbar">
           <div className="p-8">
+            <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors mb-8 group">
+               <Home className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+               <span className="text-[10px] font-bold uppercase tracking-widest">Return to Proposals</span>
+            </Link>
+
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-[1.25rem] bg-slate-800 flex items-center justify-center shadow-lg">
                 <Layers className="w-6 h-6 text-white" />
