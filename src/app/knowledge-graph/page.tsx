@@ -109,7 +109,7 @@ export default function KnowledgeGraphPage() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-[#FDFEFF] text-slate-900 font-sans p-6 md:p-10">
+    <div className="min-h-screen bg-[#FDFEFF] text-slate-900 font-sans p-1 md:p-2">
       <AnimatePresence>
         {showShareModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/40 backdrop-blur-sm">
@@ -134,12 +134,15 @@ export default function KnowledgeGraphPage() {
       </AnimatePresence>
 
       <div className="max-w-[1600px] mx-auto">
-        <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors mb-8 group"><Home className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" /><span className="text-[10px] font-black uppercase tracking-widest text-slate-600">Return to Proposals</span></Link>
+        <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors mb-1 group"><Home className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" /><span className="text-[10px] font-black uppercase tracking-widest text-slate-600">Return to Proposals</span></Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-10">
-          <header className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-4"><div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center shadow-2xl"><Network className="w-7 h-7 text-white" /></div><h1 className="text-3xl font-black text-slate-900 tracking-tight uppercase leading-none text-wrap">Knowledge Graph</h1></div>
-            <p className="text-xl text-indigo-700 font-bold uppercase tracking-tight">AI-Driven Relational Mapping</p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-4 items-start">
+          <header className="lg:col-span-4 pt-2">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shadow-lg"><Network className="w-6 h-6 text-white" /></div>
+              <h1 className="text-3xl font-black text-slate-900 tracking-tight uppercase leading-none">Knowledge Graph</h1>
+            </div>
+            <p className="text-sm text-indigo-600 font-bold uppercase tracking-widest ml-16">AI-Driven Relational Mapping</p>
           </header>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
