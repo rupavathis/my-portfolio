@@ -12,7 +12,7 @@ import {
 const PROPOSALS = [
   {
     id: 'dashboard',
-    title: 'DASHBOARD',
+    title: 'Dashboard',
     subtitle: 'Infrastructure Visibility',
     description: 'Ensure the long-term health and FAIR compliance of scholar-led digital initiatives.',
     link: '/all-project-dashboard',
@@ -22,7 +22,7 @@ const PROPOSALS = [
   },
   {
     id: 'mapping',
-    title: 'Foundational Tool - Map',
+    title: 'Foundational Tool 1 - Map',
     subtitle: 'Interactive Mapping',
     description: 'Instantly visualize historical datasets through a high-performance geospatial engine.',
     link: '/map-prototype',
@@ -32,7 +32,7 @@ const PROPOSALS = [
   },
   {
     id: 'graph',
-    title: 'Foundational Tool - Knowledge Graph',
+    title: 'Foundational Tool 2 - Knowledge Graph',
     subtitle: 'Discovery Engine',
     description: 'Extract and map complex social webs from historical text to reveal hidden patterns.',
     link: '/knowledge-graph',
