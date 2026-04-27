@@ -5,14 +5,15 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Layers, Search, Map as MapIcon, ChevronRight, 
-  ArrowRight, ShieldCheck, Globe, Database, Cpu
+  ArrowRight, ShieldCheck, Globe, Database, Cpu,
+  Network
 } from 'lucide-react';
 
 const PROPOSALS = [
   {
     id: 'dashboard',
-    title: 'Project Health Dashboard',
-    subtitle: 'Infrastructure Visibility',
+    title: 'Dashboard',
+    subtitle: 'Projects Metrics',
     description: 'Ensuring the longevity of scholar-led initiatives. A monitoring system that guarantees research projects remain accessible, FAIR-compliant, and technically robust for future generations.',
     link: '/all-project-dashboard',
     icon: <Layers className="w-6 h-6" />,
@@ -20,24 +21,24 @@ const PROPOSALS = [
     tags: ['Maintenance', 'FAIR Data', 'Analytics']
   },
   {
-    id: 'search',
-    title: 'Discovery & Research Engine',
-    subtitle: 'Advanced Archive Search',
-    description: 'Empowering students and scholars to rapidly develop research projects. An intelligent search interface that turns complex historical archives into actionable research datasets.',
-    link: '/search-prototype',
-    icon: <Search className="w-6 h-6" />,
-    color: 'from-emerald-500 to-teal-600',
-    tags: ['Rapid Discovery', 'Data Extraction', 'Research']
-  },
-  {
     id: 'mapping',
-    title: 'Geospatial Inquiry Tool',
-    subtitle: 'Interactive Mapping',
+    title: 'Foundational Tool - Map',
+    subtitle: 'Geospatial mapping',
     description: 'Benefit from instant spatial visualization. A tool designed for scholars to quickly upload datasets and visualize historical patterns through a high-performance interactive engine.',
     link: '/map-prototype',
     icon: <MapIcon className="w-6 h-6" />,
     color: 'from-violet-500 to-purple-600',
     tags: ['Visualization', 'Spatial Humanities', 'GIS']
+  },
+  {
+    id: 'graph',
+    title: 'Foundational Tool - Knowledge Graph',
+    subtitle: 'Nodes and Connections',
+    description: 'Mapping the complex web of historical relationships. Visualise connections between people, places, and events across multiple archives to identify silent patterns.',
+    link: '/knowledge-graph',
+    icon: <Network className="w-6 h-6" />,
+    color: 'from-orange-500 to-amber-600',
+    tags: ['Relational Data', 'Linked Data', 'Discovery']
   }
 ];
 
