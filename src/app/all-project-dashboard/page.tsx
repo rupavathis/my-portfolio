@@ -358,15 +358,7 @@ export default function AllProjectDashboard() {
               </div>
             </div>
 
-            <div className="mb-10 p-5 rounded-2xl bg-indigo-50/50 border border-indigo-200">
-               <div className="flex items-center gap-2 mb-2">
-                  <Info className="w-3.5 h-3.5 text-indigo-700" />
-                  <span className="text-[10px] font-bold text-indigo-900 uppercase">Observer Framing</span>
-               </div>
-               <p className="text-[11px] text-indigo-800 italic leading-relaxed">
-                  "Technical architecture should not just serve the needs of today, but ensure the scholarly heritage of Digital Humanities remains accessible for the next century."
-               </p>
-            </div>
+           
 
             <div className="space-y-8">
               {/* CURRENT PROJECTS */}
@@ -454,19 +446,7 @@ export default function AllProjectDashboard() {
                 className="max-w-6xl mx-auto"
               >
                 {/* PROJECT HEADER */}
-                <div className="flex flex-wrap items-center gap-4 mb-6">
-                  <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                    selectedProject.status === 'operational' ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 
-                    selectedProject.status === 'at-risk' ? 'bg-amber-100 text-amber-800 border border-amber-200' :
-                    'bg-rose-100 text-rose-800 border border-rose-200'
-                  }`}>
-                    Status: {selectedProject.status}
-                  </span>
-                  <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[10px] font-bold text-slate-600 uppercase tracking-wider">
-                    <Database className="w-3 h-3" /> Preservation: {selectedProject.preservationStatus}
-                  </span>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Last Update: {selectedProject.lastUpdate}</span>
-                </div>
+               
 
                 <div className="mb-10">
                   <h1 className="text-4xl font-black text-slate-900 tracking-tight mb-4">{selectedProject.name}</h1>
@@ -579,30 +559,7 @@ export default function AllProjectDashboard() {
                   </div>
                 </div>
 
-                {/* FAIR COMPLIANCE SCORES */}
-                <div className="bg-white rounded-[3rem] p-12 border border-slate-200 shadow-sm mb-10">
-                  <h3 className="text-sm font-black text-slate-900 uppercase tracking-[0.2em] mb-12 flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-indigo-600" /> FAIR Compliance Indicators
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-                    {Object.entries(selectedProject.fairCompliance).map(([key, val]) => (
-                      <div key={key} className="space-y-5">
-                        <div className="flex justify-between items-end">
-                          <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">{key}</span>
-                          <span className="text-lg font-black text-slate-900">{val}%</span>
-                        </div>
-                        <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                          <motion.div 
-                            initial={{ width: 0 }}
-                            animate={{ width: `${val}%` }}
-                            className={`h-full ${val > 85 ? 'bg-indigo-600' : val > 70 ? 'bg-blue-500' : 'bg-amber-500'}`}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
+               
                 {/* WARNING LOG */}
                 {selectedProject.status !== 'operational' && (
                   <div className="p-8 rounded-[2.5rem] bg-rose-50 border border-rose-200 mb-10 flex items-center gap-8 animate-pulse">

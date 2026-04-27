@@ -12,33 +12,33 @@ import {
 const PROPOSALS = [
   {
     id: 'dashboard',
-    title: 'Dashboard',
-    subtitle: 'Projects Metrics',
-    description: 'Ensuring the longevity of scholar-led initiatives. A monitoring system that guarantees research projects remain accessible, FAIR-compliant, and technically robust for future generations.',
+    title: 'DASHBOARD',
+    subtitle: 'Infrastructure Visibility',
+    description: 'Ensure the long-term health and FAIR compliance of scholar-led digital initiatives.',
     link: '/all-project-dashboard',
     icon: <Layers className="w-6 h-6" />,
     color: 'from-blue-500 to-indigo-600',
-    tags: ['Maintenance', 'FAIR Data', 'Analytics']
+    tags: ['Health', 'FAIR', 'Longevity']
   },
   {
     id: 'mapping',
     title: 'Foundational Tool - Map',
-    subtitle: 'Geospatial mapping',
-    description: 'Benefit from instant spatial visualization. A tool designed for scholars to quickly upload datasets and visualize historical patterns through a high-performance interactive engine.',
+    subtitle: 'Interactive Mapping',
+    description: 'Instantly visualize historical datasets through a high-performance geospatial engine.',
     link: '/map-prototype',
     icon: <MapIcon className="w-6 h-6" />,
     color: 'from-violet-500 to-purple-600',
-    tags: ['Visualization', 'Spatial Humanities', 'GIS']
+    tags: ['GIS', 'Spatial', 'Patterns']
   },
   {
     id: 'graph',
     title: 'Foundational Tool - Knowledge Graph',
-    subtitle: 'Nodes and Connections',
-    description: 'Mapping the complex web of historical relationships. Visualise connections between people, places, and events across multiple archives to identify silent patterns.',
+    subtitle: 'Discovery Engine',
+    description: 'Extract and map complex social webs from historical text to reveal hidden patterns.',
     link: '/knowledge-graph',
     icon: <Network className="w-6 h-6" />,
     color: 'from-orange-500 to-amber-600',
-    tags: ['Relational Data', 'Linked Data', 'Discovery']
+    tags: ['Network', 'AI', 'Discovery']
   }
 ];
 
@@ -58,10 +58,10 @@ export default function ProposalsPage() {
               <ShieldCheck className="w-3.5 h-3.5" /> Scholar-Centric Research Tools
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight leading-none mb-8 max-w-4xl">
-              Accelerating <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">Humanities Research</span> through Data.
+              Accelerating <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">Humanities Research</span>
             </h1>
-            <p className="text-xl text-slate-600 font-medium max-w-2xl leading-relaxed mb-12">
-              Transforming how students and scholars engage with historical data by providing the tools to develop, visualize, and sustain digital research projects at scale.
+            <p className="text-2xl text-slate-600 font-bold max-w-2xl leading-relaxed mb-12">
+              Empowering scholars with tools to visualize, discover, and sustain digital research at scale.
             </p>
             
             <div className="flex gap-12 text-slate-400">
