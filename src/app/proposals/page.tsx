@@ -48,7 +48,7 @@ export default function ProposalsPage() {
       <main className="max-w-6xl mx-auto px-6 py-20 md:py-32">
         
         {/* HERO SECTION */}
-        <section className="mb-24">
+        <section className="mb-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,13 +62,7 @@ export default function ProposalsPage() {
             </h1>
             <p className="text-2xl text-slate-600 font-bold max-w-2xl leading-relaxed mb-12">
               Empowering scholars with tools to visualize, discover, and sustain digital research at scale.
-            </p>
-            
-            <div className="flex gap-12 text-slate-400">
-               <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Global Access</span></div>
-               <div className="flex items-center gap-2"><Database className="w-4 h-4" /> <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Preservation</span></div>
-               <div className="flex items-center gap-2"><Cpu className="w-4 h-4" /> <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Intelligence</span></div>
-            </div>
+            </p>       
           </motion.div>
         </section>
 
@@ -120,10 +114,8 @@ export default function ProposalsPage() {
                 "Technical architecture should not just serve the needs of today, but ensure the scholarly heritage of Digital Humanities remains accessible for the next century."
               </p>
               <div className="flex justify-center items-center gap-4">
-                 <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-500 text-xs border border-slate-300">RS</div>
                  <div className="text-left">
                     <div className="text-sm font-bold text-slate-900">Rupavathi Subramani</div>
-                    <div className="text-xs text-slate-500 font-medium">Software Engineering Lead Proposal</div>
                  </div>
               </div>
            </div>

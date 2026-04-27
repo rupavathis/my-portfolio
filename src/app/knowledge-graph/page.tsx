@@ -33,6 +33,7 @@ export default function KnowledgeGraphPage() {
   const [selectedNode, setSelectedNode] = useState<any>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [hasProcessed, setHasProcessed] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [containerSize, setContainerSize] = useState({ width: 1000, height: 600 });
   const [pulseTime, setPulseTime] = useState(0);
   const [copied, setCopied] = useState(false);
@@ -44,6 +45,7 @@ export default function KnowledgeGraphPage() {
   const nodeColors = useMemo(() => COLORS, []);
 
   useEffect(() => {
+    setMounted(true);
     let animationFrame: number;
     const animate = (time: number) => {
       setPulseTime(time / 200);
@@ -103,6 +105,8 @@ export default function KnowledgeGraphPage() {
       ) : part
     );
   };
+
+  if (!mounted) return null;
 
   return (
     <div className="min-h-screen bg-[#FDFEFF] text-slate-900 font-sans p-6 md:p-10">
