@@ -36,7 +36,6 @@ export default function MapContent() {
   const [mounted, setMounted] = useState(false);
   const [showHistoricalMap, setShowHistoricalMap] = useState(false);
   
-  // Selection State
   const [selection, setSelection] = useState<{ minLng: number, minLat: number, maxLng: number, maxLat: number } | null>(null);
   const [isSelecting, setIsSelecting] = useState(false);
   const [startPoint, setStartPoint] = useState<[number, number] | null>(null);
@@ -88,8 +87,7 @@ export default function MapContent() {
     const names = selectedItems.map(item => encodeURIComponent(item.name)).join(',');
     const url = `${window.location.origin}${window.location.pathname}?selected=${names}`;
     navigator.clipboard.writeText(url).then(() => {
-      setCopied(true);
-      setShowShareModal(true);
+      setCopied(true); setShowShareModal(true);
       setTimeout(() => setCopied(false), 2000);
     });
   };
@@ -175,27 +173,17 @@ export default function MapContent() {
       <AnimatePresence>
         {showShareModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/40 backdrop-blur-sm">
-            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="bg-white rounded-[2.5rem] shadow-2xl border border-slate-200 p-10 max-w-md w-full relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="bg-white rounded-[2.5rem] shadow-2xl border border-slate-200 p-10 max-w-md w-full relative overflow-hidden text-center">
               <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-              <div className="flex flex-col items-center text-center relative z-10">
-                <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-emerald-100"><Check className="w-8 h-8" /></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-emerald-100 mx-auto"><Check className="w-8 h-8" /></div>
                 <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight mb-2">Analysis Copied!</h3>
-                <p className="text-sm text-slate-500 font-bold leading-relaxed mb-8">Your research snapshot has been saved to your clipboard and is ready to be shared with your colleagues.</p>
+                <p className="text-sm text-slate-500 font-bold leading-relaxed mb-8">Your research snapshot has been saved and is ready to be shared.</p>
                 <div className="w-full space-y-3 mb-8">
-                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-left ml-1">Quick Share via</div>
                    <div className="grid grid-cols-3 gap-3">
-                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center gap-2 group cursor-pointer hover:border-blue-300 transition-all">
-                         <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"><Mail className="w-4 h-4" /></div>
-                         <span className="text-[9px] font-bold text-slate-500">Email</span>
-                      </div>
-                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center gap-2 group cursor-pointer hover:border-indigo-300 transition-all">
-                         <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"><Users2 className="w-4 h-4" /></div>
-                         <span className="text-[9px] font-bold text-slate-500">Teams</span>
-                      </div>
-                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center gap-2 group cursor-pointer hover:border-purple-300 transition-all">
-                         <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"><MessageSquare className="w-4 h-4" /></div>
-                         <span className="text-[9px] font-bold text-slate-500">Slack</span>
-                      </div>
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center gap-2 group cursor-pointer hover:border-blue-300 transition-all"><div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"><Mail className="w-4 h-4" /></div><span className="text-[9px] font-bold text-slate-500">Email</span></div>
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center gap-2 group cursor-pointer hover:border-indigo-300 transition-all"><div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"><Users2 className="w-4 h-4" /></div><span className="text-[9px] font-bold text-slate-500">Teams</span></div>
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center gap-2 group cursor-pointer hover:border-purple-300 transition-all"><div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"><MessageSquare className="w-4 h-4" /></div><span className="text-[9px] font-bold text-slate-500">Slack</span></div>
                    </div>
                 </div>
                 <button onClick={() => setShowShareModal(false)} className="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-indigo-600 transition-all shadow-xl">Return to Map</button>
@@ -228,17 +216,17 @@ export default function MapContent() {
             <div className="flex items-center gap-2 mb-2"><MousePointer2 className="w-3.5 h-3.5 text-indigo-600" /><p className="text-[10px] text-indigo-800 font-black uppercase tracking-wider">Spatial Analysis</p></div>
             <p className="text-[11px] text-indigo-700 font-medium leading-relaxed">Click and drag to draw a <b>Rectangle</b> and extract data within the selected boundary.</p>
           </div>
-          {selection && (<button onClick={() => { setSelection(null); setStartPoint(null); }} className="w-full py-3 text-[10px] font-black text-rose-600 uppercase tracking-widest border-2 border-rose-100 rounded-xl hover:bg-rose-50 transition-all shadow-sm">Clear Area Selection</button>)}
+          {selection && (<button onClick={() => { setSelection(null); setStartPoint(null); }} className="w-full py-3 text-[10px] font-black text-rose-600 uppercase tracking-widest border-2 border-rose-100 rounded-xl hover:bg-rose-50 transition-all shadow-sm">Clear Selection</button>)}
           {data.length > 0 && (<div className="flex-1 overflow-hidden flex flex-col min-h-0"><div className="flex justify-between items-end mb-4 px-1"><h2 className="text-[11px] font-black text-slate-900 uppercase tracking-widest">Active Points ({data.length})</h2><button onClick={() => setData([])} className="text-[10px] font-black text-rose-600 hover:text-rose-700 uppercase tracking-wider">Reset</button></div><div className="space-y-2 overflow-y-auto pr-2 custom-scrollbar">{data.map((loc, i) => (<div key={i} className="p-4 bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition-all cursor-pointer group" onClick={() => setViewState({ ...viewState, longitude: loc.longitude, latitude: loc.latitude, zoom: 12, transitionDuration: 1000, transitionInterpolator: new FlyToInterpolator() })}><div className="text-xs font-bold text-slate-900 group-hover:text-blue-700">{loc.name}</div><div className="text-[10px] text-slate-500 mt-1 font-mono">{loc.latitude.toFixed(4)}, {loc.longitude.toFixed(4)}</div></div>))}</div></div>)}
         </div>
       </div>
       <div className="flex-1 p-8 bg-[#FDFEFF] relative">
         <div className="absolute top-12 right-12 z-20 flex flex-col items-end gap-3">
-          <button onClick={handleShare} disabled={selectedItems.length === 0} className={`flex items-center gap-3 px-6 py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-2xl transition-all active:scale-95 ${selectedItems.length > 0 ? 'bg-slate-900 text-white hover:bg-indigo-600' : 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'}`}>{copied ? (<><Check className="w-4 h-4 text-emerald-400" />Copied Link!</>) : (<><Share2 className="w-4 h-4" />Share Analysis ({selectedItems.length})</>)}</button>
+          <button onClick={handleShare} disabled={selectedItems.length === 0} className={`flex items-center gap-3 px-6 py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-2xl transition-all active:scale-95 ${selectedItems.length > 0 ? 'bg-slate-900 text-white hover:bg-indigo-600' : 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'}`}>{copied ? (<><Check className="w-4 h-4 text-emerald-400" />Copied!</>) : (<><Share2 className="w-4 h-4" />Share Analysis ({selectedItems.length})</>)}</button>
           {selectedItems.length > 0 && (<div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-xl max-w-xs animate-in slide-in-from-top-4"><p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 border-b border-slate-100 pb-2">Selected Nodes</p><div className="flex flex-wrap gap-1.5">{selectedItems.slice(0, 5).map(item => (<span key={item.name} className="px-2 py-1 bg-indigo-50 text-indigo-700 rounded-md text-[9px] font-bold border border-indigo-100">{item.name}</span>))}{selectedItems.length > 5 && <span className="text-[9px] font-bold text-slate-400 px-1">+{selectedItems.length - 5} more</span>}</div></div>)}
         </div>
         <div className="w-full h-full relative rounded-[3rem] shadow-2xl overflow-hidden border-8 border-white bg-slate-200 cursor-crosshair">
-          <DeckGL viewState={viewState} onViewStateChange={({viewState}) => setViewState({ ...viewState, pitch: 0, bearing: 0 })} controller={{ dragPan: !isSelecting, dragRotate: false }} layers={layers} onDragStart={(info) => { if (info.coordinate) { setIsSelecting(true); setStartPoint(info.coordinate); setSelection({ minLng: info.coordinate[0], minLat: info.coordinate[1], maxLng: info.coordinate[0], maxLat: info.coordinate[1] }); return true; } }} onDrag={(info) => { if (isSelecting && startPoint && info.coordinate) { setSelection({ minLng: Math.min(startPoint[0], info.coordinate[0]), maxLng: Math.max(startPoint[0], info.coordinate[0]), minLat: Math.min(startPoint[1], info.coordinate[1]), maxLat: Math.max(startPoint[1], info.coordinate[1]) }); return true; } }} onDragEnd={() => setIsSelecting(false)}><Map mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json" /></DeckGL>
+          <DeckGL viewState={viewState} onViewStateChange={({viewState}) => setViewState({ ...viewState, pitch: 0, bearing: 0 })} controller={{ dragPan: !isSelecting, dragRotate: false }} layers={layers} onDragStart={(info) => { if (info.coordinate) { setIsSelecting(true); setStartPoint(info.coordinate as [number, number]); setSelection({ minLng: info.coordinate[0], minLat: info.coordinate[1], maxLng: info.coordinate[0], maxLat: info.coordinate[1] }); return true; } }} onDrag={(info) => { if (isSelecting && startPoint && info.coordinate) { setSelection({ minLng: Math.min(startPoint[0], info.coordinate[0]), maxLng: Math.max(startPoint[0], info.coordinate[0]), minLat: Math.min(startPoint[1], info.coordinate[1]), maxLat: Math.max(startPoint[1], info.coordinate[1]) }); return true; } }} onDragEnd={() => setIsSelecting(false)}><Map mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json" /></DeckGL>
         </div>
       </div>
     </div>
