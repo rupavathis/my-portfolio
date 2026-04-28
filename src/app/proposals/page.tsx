@@ -11,16 +11,6 @@ import {
 
 const PROPOSALS = [
   {
-    id: 'dashboard',
-    title: 'Dashboard',
-    subtitle: 'Infrastructure Visibility',
-    description: 'Ensure projects health by measuring their availability, reliability metrics and monitoring.',
-    link: '/all-project-dashboard',
-    icon: <Layers className="w-6 h-6" />,
-    color: 'from-blue-500 to-indigo-600',
-    tags: ['Health', 'Metrics', 'Monitoring']
-  },
-  {
     id: 'mapping',
     title: 'Foundational Tool 1 - Map',
     subtitle: 'Interactive Mapping',
@@ -39,6 +29,16 @@ const PROPOSALS = [
     icon: <Network className="w-6 h-6" />,
     color: 'from-orange-500 to-amber-600',
     tags: ['Network', 'AI', 'Discovery']
+  },
+  {
+    id: 'dashboard',
+    title: 'Dashboard',
+    subtitle: 'Infrastructure Visibility',
+    description: 'Ensure projects health by measuring their availability, reliability metrics and monitoring.',
+    link: '/all-project-dashboard',
+    icon: <Layers className="w-6 h-6" />,
+    color: 'from-blue-500 to-indigo-600',
+    tags: ['Health', 'Metrics', 'Monitoring']
   }
 ];
 

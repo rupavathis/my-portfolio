@@ -7,3 +7,49 @@ foundational infrastructure & technological elements, its easy to onboard easily
 In terms of management, this will reduce overheads
 
 Standardisation - styling and process standardisation are important for scaling up things
+
+technical needs, 
+map engine
+filter, extract, build subsets of data for their own research
+these tools are invaluable
+these fouindational tools will be standardised 
+it saves time
+when tools like this are offered in dpt level to humanities tudents and scholars, it will create a standard to share, 
+archive, visualise. - in this eg, we have a map engine
+
+Pain point - 
+excel file, 100 data, 
+i need people from in and around maynooth
+they create radius, add more parameter
+
+We can expose foundational tools that will be standardised
+Geocomputational tool 
+haversine formula
+foundational tools
+not only enable them but 
+
+pain points, how their research evolves,
+macmorris
+make it available to entire department
+whoever needs foundational technical tools can access this
+
+complicated things, 
+whole ocean of technical things to just to host the website - security, hosting, infrastructural things
+
+SSH key -> 
+remote machine -> run the code -> python script 
+they need a SSH 
+Humanities dept - 
+VM - they need access 
+aove avg tech knowledge person will use ssh key instead of pw,
+but RSA 2048 is vulnerable and ED25519 . knowing such tech detail is unlikely
+
+a typical humanities scholars - LLM
+html + css -> level 2 - authentication -> level 3 - authorisation -> passwordless sign with MSA -> editing and storing data 
+storing textual data is dirt cheap 1TB storage few dollars per maynooth
+10 k - less than gigabyte
+moee than a GB of data
+
+accelerate 
+
+the tech team takes it 

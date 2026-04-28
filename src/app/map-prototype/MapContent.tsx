@@ -155,7 +155,7 @@ export default function MapContent() {
       })
     ];
     if (showHistoricalMap) {
-      activeLayers.unshift(new BitmapLayer({ id: 'historical-map-layer', bounds: [-10.66, 51.3, -5.3, 55.45], image: '/image.png', opacity: 0.7 }));
+      activeLayers.unshift(new BitmapLayer({ id: 'historical-map-layer', bounds: [-10.66, 51.3, -5.3, 55.45], image: '/prototypes/image.png', opacity: 0.7 }));
     }
     if (selection) {
       activeLayers.push(new PolygonLayer({

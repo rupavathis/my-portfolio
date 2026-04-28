@@ -153,7 +153,7 @@ export default function JourneyPage() {
           <div className="space-y-8">
             <div className="relative group rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-black">
               <video 
-                src="/my-portfolio/macmorris.mov" 
+                src="/prototypes/macmorris.mov" 
                 autoPlay 
                 muted 
                 loop 

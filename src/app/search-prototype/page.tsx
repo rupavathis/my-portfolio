@@ -30,7 +30,7 @@ export default function SearchPrototypePage() {
 
   // Load data from CSV on mount
   useEffect(() => {
-    fetch('/my-portfolio/historical_ireland.csv')
+    fetch('/prototypes/historical_ireland.csv')
       .then(res => res.text())
       .then(text => {
         const lines = text.split('\n');
