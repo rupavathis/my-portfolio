@@ -14,11 +14,11 @@ const PROPOSALS = [
     id: 'dashboard',
     title: 'Dashboard',
     subtitle: 'Infrastructure Visibility',
-    description: 'Ensure the long-term health and FAIR compliance of scholar-led digital initiatives.',
+    description: 'Ensure projects health by measuring their availability, reliability metrics and monitoring.',
     link: '/all-project-dashboard',
     icon: <Layers className="w-6 h-6" />,
     color: 'from-blue-500 to-indigo-600',
-    tags: ['Health', 'FAIR', 'Longevity']
+    tags: ['Health', 'Metrics', 'Monitoring']
   },
   {
     id: 'mapping',
