@@ -100,7 +100,7 @@ function KnowledgeGraphContent() {
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<any>(null);
 
-  const graphData = useMemo(() => MERCHANT_DATA, []);
+  const [graphData, setGraphData] = useState(() => JSON.parse(JSON.stringify(MERCHANT_DATA)));
   const nodeColors = useMemo(() => COLORS, []);
 
   useEffect(() => {
@@ -147,7 +147,13 @@ function KnowledgeGraphContent() {
   const handleProcessText = () => {
     setIsProcessing(true);
     setHasProcessed(false);
-    setTimeout(() => { setIsProcessing(false); setHasProcessed(true); }, 1500);
+    setSelectedNode(null);
+    setHoverNode(null);
+    setTimeout(() => { 
+      setGraphData(JSON.parse(JSON.stringify(MERCHANT_DATA)));
+      setIsProcessing(false); 
+      setHasProcessed(true); 
+    }, 1500);
   };
 
   const handleShare = () => {
