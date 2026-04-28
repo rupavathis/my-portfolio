@@ -89,6 +89,7 @@ function KnowledgeGraphContent() {
   const searchParams = useSearchParams();
   const [text, setText] = useState(DEFAULT_TEXT);
   const [selectedNode, setSelectedNode] = useState<any>(null);
+  const [hoverNode, setHoverNode] = useState<any>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [hasProcessed, setHasProcessed] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -126,12 +127,21 @@ function KnowledgeGraphContent() {
     if (graphRef.current && hasProcessed) {
       const fg = graphRef.current;
       fg.d3Force('charge').strength(-4000); 
-      fg.d3Force('link').distance(250).strength(0.5); 
+      fg.d3Force('link').distance(800).strength(0.5); 
       fg.d3Force('collide', d3.forceCollide(120)); 
       fg.d3Force('center', d3.forceCenter(containerSize.width / 2, 300)); 
       fg.d3AlphaTarget(0.1);
       fg.d3ReheatSimulation();
-      setTimeout(() => { if (graphRef.current) graphRef.current.zoomToFit(800, 100); }, 1000);
+      
+      setTimeout(() => { 
+        if (graphRef.current) {
+          // Instantly fit to get the base scale and center
+          graphRef.current.zoomToFit(0, 100);
+          // Then immediately animate a zoom-in to spread nodes out visually
+          const baseZoom = graphRef.current.zoom();
+          graphRef.current.zoom(baseZoom * 3.5, 800);
+        } 
+      }, 1000);
     }
   }, [hasProcessed, containerSize.width]);
 
@@ -231,7 +241,7 @@ function KnowledgeGraphContent() {
                 </div>
               </div>
               
-              <button onClick={handleProcessText} disabled={isProcessing} className="flex items-center gap-3 px-10 py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-[12px] hover:bg-indigo-600 transition-all shadow-xl active:scale-95 disabled:bg-slate-300">{isProcessing ? <><RefreshCcw className="w-4 h-4 animate-spin" /> Extracting...</> : <>Map Relationships</>}</button>
+              <button onClick={handleProcessText} disabled={isProcessing} className="flex items-center gap-3 px-10 py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-[12px] hover:bg-indigo-600 transition-all shadow-xl active:scale-95 disabled:bg-slate-300">{isProcessing ? <><RefreshCcw className="w-4 h-4 animate-spin" /> Extracting...</> : <>Compute</>}</button>
             </div>
           </div>
         </div>
@@ -243,7 +253,7 @@ function KnowledgeGraphContent() {
             ) : (
               <div className="relative z-10 w-full h-full">
                 <ForceGraph2D
-                  ref={graphRef} graphData={graphData} width={containerSize.width} height={600} nodeRelSize={7} nodeColor={node => nodeColors[node.type as keyof typeof COLORS] || '#94a3b8'} linkWidth={2} linkColor={() => '#e2e8f0'} linkDirectionalArrowLength={6} linkDirectionalArrowRelPos={1} onNodeClick={node => setSelectedNode(node)} d3AlphaDecay={0.01} d3VelocityDecay={0.1} nodeCanvasObjectMode={() => 'after'}
+                  ref={graphRef} graphData={graphData} width={containerSize.width} height={600} nodeRelSize={7} nodeColor={node => nodeColors[node.type as keyof typeof COLORS] || '#94a3b8'} linkWidth={2} linkColor={(link: any) => { const isHovered = hoverNode && (link.source.id === hoverNode.id || link.target.id === hoverNode.id); const isSelected = selectedNode && (link.source.id === selectedNode.id || link.target.id === selectedNode.id); return (isHovered || isSelected) ? '#cbd5e1' : 'rgba(0,0,0,0)'; }} linkDirectionalArrowLength={(link: any) => { const isHovered = hoverNode && (link.source.id === hoverNode.id || link.target.id === hoverNode.id); const isSelected = selectedNode && (link.source.id === selectedNode.id || link.target.id === selectedNode.id); return (isHovered || isSelected) ? 6 : 0; }} linkDirectionalArrowRelPos={1} onNodeClick={node => setSelectedNode(node)} onNodeHover={node => setHoverNode(node)} d3AlphaDecay={0.01} d3VelocityDecay={0.1} nodeCanvasObjectMode={() => 'after'}
                   nodeCanvasObject={(node: any, ctx, globalScale) => {
                     const label = node.id; const fontSize = 14 / globalScale; ctx.font = `bold ${fontSize}px Inter, sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
                     const labelY = node.y - 12; ctx.fillStyle = 'rgba(255, 255, 255, 0.95)'; const textWidth = ctx.measureText(label).width; ctx.fillRect(node.x - textWidth/2 - 4, labelY - fontSize/2, textWidth + 8, fontSize);
@@ -251,9 +261,15 @@ function KnowledgeGraphContent() {
                     if (selectedNode && node.id === selectedNode.id) {
                       const pulseScale = 1.5 + Math.sin(pulseTime) * 0.5; ctx.beginPath(); ctx.arc(node.x, node.y, 8 * pulseScale, 0, 2 * Math.PI, false); ctx.fillStyle = `${nodeColors[node.type as keyof typeof COLORS] || '#94a3b8'}44`; ctx.fill();
                     }
+                    if (hoverNode && node.id === hoverNode.id && (!selectedNode || selectedNode.id !== hoverNode.id)) {
+                      ctx.beginPath(); ctx.arc(node.x, node.y, 10, 0, 2 * Math.PI, false); ctx.fillStyle = `${nodeColors[node.type as keyof typeof COLORS] || '#94a3b8'}22`; ctx.fill();
+                    }
                   }}
                   linkCanvasObjectMode={() => 'after'}
                   linkCanvasObject={(link: any, ctx, globalScale) => {
+                    const isHovered = hoverNode && (link.source.id === hoverNode.id || link.target.id === hoverNode.id);
+                    const isSelected = selectedNode && (link.source.id === selectedNode.id || link.target.id === selectedNode.id);
+                    if (!isHovered && !isSelected) return;
                     const labelFontSize = 12 / globalScale; ctx.font = `bold ${labelFontSize}px Inter, sans-serif`; const start = link.source; const end = link.target; if (typeof start !== 'object' || typeof end !== 'object') return;
                     const midX = start.x + (end.x - start.x) * 0.5; const midY = start.y + (end.y - start.y) * 0.5; ctx.save(); ctx.translate(midX, midY); ctx.fillStyle = 'rgba(255, 255, 255, 0.98)'; const textWidth = ctx.measureText(link.label).width; ctx.fillRect(-textWidth/2 - 6, -labelFontSize/2 - 4, textWidth + 12, labelFontSize + 8); ctx.fillStyle = '#64748b'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(link.label, 0, 0); ctx.restore();
                   }}
