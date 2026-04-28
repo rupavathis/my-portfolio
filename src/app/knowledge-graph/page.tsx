@@ -130,7 +130,6 @@ function KnowledgeGraphContent() {
       fg.d3Force('link').distance(800).strength(0.5); 
       fg.d3Force('collide', d3.forceCollide(120)); 
       fg.d3Force('center', d3.forceCenter(containerSize.width / 2, 300)); 
-      fg.d3AlphaTarget(0.1);
       fg.d3ReheatSimulation();
       
       setTimeout(() => { 
