@@ -225,7 +225,6 @@ function KnowledgeGraphContent() {
               <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shadow-lg"><Network className="w-6 h-6 text-white" /></div>
               <h1 className="text-3xl font-black text-slate-900 tracking-tight uppercase leading-none">Knowledge Graph</h1>
             </div>
-            <p className="text-sm text-indigo-600 font-bold uppercase tracking-widest ml-16">AI-Driven Relational Mapping</p>
           </header>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
